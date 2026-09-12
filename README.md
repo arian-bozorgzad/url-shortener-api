@@ -1,110 +1,44 @@
 # URL Shortener REST API
 
-A small backend project built with **FastAPI**, **SQLAlchemy**, and **SQLite**. It creates short URLs, redirects them to the original address, and keeps basic click statistics.
+A small URL shortener backend built with FastAPI and SQLite.
 
-I built this project to practice REST APIs, database storage, redirects, validation, and handling duplicate short codes.
+The API creates short links, redirects users to the original URL and keeps basic click statistics.
 
 ## Features
 
-- Create a short URL from a normal URL
-- Optional custom short code
-- Redirect short links to the original URL
-- Count how many times each link is opened
-- Store the last access time
-- View basic statistics for a link
-- Detect duplicate short codes
-- Delete links
-- Basic 404 and conflict responses
-- Swagger API documentation
+- Create short URLs
+- Use an optional custom short code
+- Redirect to the original URL
+- Count link clicks
+- Show basic link statistics
+- Check for duplicate short codes
+- Basic error handling
 
-## Project structure
+## Built with
 
-```text
-url-shortener-api/
-├── app/
-│   ├── __init__.py
-│   ├── database.py
-│   ├── main.py
-│   ├── models.py
-│   └── schemas.py
-├── tests/
-│   └── test_api.py
-├── .gitignore
-├── README.md
-└── requirements.txt
-```
+- Python
+- FastAPI
+- SQLite
+- SQLAlchemy
 
-## Run locally
+## Run the project
 
-### 1. Create a virtual environment
-
-```bash
-python -m venv .venv
-```
-
-Windows:
-
-```bash
-.venv\Scripts\activate
-```
-
-macOS / Linux:
-
-```bash
-source .venv/bin/activate
-```
-
-### 2. Install dependencies
+Install the requirements:
 
 ```bash
 pip install -r requirements.txt
 ```
 
-### 3. Start the API
+Start the server:
 
 ```bash
 uvicorn app.main:app --reload
 ```
 
-Open Swagger docs at:
-
-```text
-http://127.0.0.1:8000/docs
-```
-
-The SQLite database is created automatically when the app starts.
-
-## Example
-
-Create a short link:
-
-```json
-POST /links
-{
-  "url": "https://example.com/some/long/page"
-}
-```
-
-Or choose a custom code:
-
-```json
-POST /links
-{
-  "url": "https://example.com/notes",
-  "custom_code": "notes1"
-}
-```
-
 Then open:
 
 ```text
-http://127.0.0.1:8000/notes1
-```
-
-Check statistics:
-
-```text
-GET /links/notes1/stats
+http://127.0.0.1:8000/docs
 ```
 
 ## Tests
@@ -112,5 +46,3 @@ GET /links/notes1/stats
 ```bash
 pytest
 ```
-
-The tests cover creating links, redirects, click tracking, statistics, and duplicate-code handling.
